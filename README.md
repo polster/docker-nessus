@@ -1,6 +1,15 @@
 Nessus in a Container
 =====================
 
+## Motivation
+
+Operate the famous Nessus Scanner in a Docker container leveraging the overhead of an extra VM.
+
+## Prerequisites
+
+* Docker environment
+* Activation code from tenable
+
 ## User Manual
 
 ### Build and Run manually
@@ -21,3 +30,19 @@ docker create -v /opt/nessus --name nessus-manager-datastore nessus-manager:late
 ```
 docker run -d --name nessus-manager -p 443:8834 --volumes-from nessus-manager-datastore nessus-manager
 ```
+* Check if the container is up and running (nessus-manager should be up, nessus-manager-datastore should be created):
+```
+docker ps -a
+```
+* Try to access the Nessus configuration wizard by entering https://localhost into your browser
+* Follow the wizard's instructions
+
+## Appendix
+
+### References
+
+* [Ansible role for the Nessus Agent deployment](https://github.com/polster/ansible-nessus-agent)
+
+### Known Issues
+
+* No known issues so far
